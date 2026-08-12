@@ -1,0 +1,36 @@
+# 依赖与构建产物
+node_modules/
+dist/
+.astro/
+
+# 旧 worktree 产出（不参考，隔离）
+.claude/
+.playwright-mcp/
+v2-*.png
+v3-*.png
+*-desktop.png
+*-mobile.png
+*-dark.png
+*-light.png
+*-full.png
+*-hero.png
+current-*.png
+verify-*.png
+about-*.png
+business-*.png
+home-*.png
+contact-*.png
+
+# 环境与本地配置
+.env
+.env.*
+!.env.example
+
+# 编辑器
+.vscode/
+.idea/
+.DS_Store
+*.log
+
+# Cloudflare
+.wrangler/
