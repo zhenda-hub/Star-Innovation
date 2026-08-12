@@ -1,18 +1,168 @@
 ---
-import "../styles/global.css";
+import BusinessCard from "../components/BusinessCard.astro";
+import CTA from "../components/CTA.astro";
+import Icon from "../components/Icon.astro";
+import Layout from "../layouts/Layout.astro";
+import SectionHeading from "../components/SectionHeading.astro";
+import { businesses, site } from "../data/site";
+
+const stats = [
+  { value: "3", label: "大业务板块" },
+  { value: "4", label: "阶段协作流程" },
+  { value: "12", label: "项核心能力" },
+  { value: "1", label: "个增长闭环" },
+];
+
+const serviceMode = [
+  {
+    icon: "target",
+    title: "目标对齐",
+    description: "先理解业务阶段、资源与预期结果，再确定可执行的切入路径。",
+  },
+  {
+    icon: "layers",
+    title: "方案规划",
+    description: "把内容、渠道、流程与交付节点拆成清晰的项目结构。",
+  },
+  {
+    icon: "send",
+    title: "协同执行",
+    description: "按节奏推进关键动作，保留沟通窗口与阶段性成果校验。",
+  },
+  {
+    icon: "clock",
+    title: "复盘迭代",
+    description: "基于数据复盘效果，持续沉淀可复用方法与下一阶段策略。",
+  },
+] as const;
+
+const strengths = [
+  {
+    icon: "users",
+    title: "业务整体视角",
+    description: "把目标、资源、内容与执行放在同一框架里设计，减少碎片化投入。",
+  },
+  {
+    icon: "sparkles",
+    title: "内容与渠道协同",
+    description: "让品牌表达、获客渠道与客户沟通保持一致，而非各自为战。",
+  },
+  {
+    icon: "chart",
+    title: "数据驱动复盘",
+    description: "用阶段数据与业务反馈调整策略，保留清晰的优化依据。",
+  },
+  {
+    icon: "shield",
+    title: "长期协作机制",
+    description: "通过流程、模板与例会机制，让合作成果可以持续延续。",
+  },
+] as const;
 ---
 
-<html lang="zh-CN">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>星动科技 · Star Innovation</title>
-  </head>
-  <body class="grid min-h-screen place-items-center bg-bg">
-    <main class="text-center">
-      <p class="eyebrow">Star Innovation</p>
-      <h1 class="mt-4 text-5xl font-bold text-ink-strong">星动科技</h1>
-      <p class="mt-4 text-lg text-muted">官网建设中 · 全新启航</p>
-    </main>
-  </body>
-</html>
+<Layout>
+  <!-- Hero -->
+  <section class="relative isolate overflow-hidden bg-brand-strong text-white">
+    <div
+      class="pointer-events-none absolute inset-0"
+      style="background-image: radial-gradient(circle at 15% 20%, rgba(99,102,241,0.55) 0, transparent 40%), radial-gradient(circle at 85% 15%, rgba(245,158,11,0.35) 0, transparent 42%), radial-gradient(circle at 70% 85%, rgba(99,102,241,0.4) 0, transparent 45%);"
+    ></div>
+    <div
+      class="pointer-events-none absolute inset-0 opacity-[0.12]"
+      style="background-image: radial-gradient(circle, #fff 1px, transparent 1.5px); background-size: 34px 34px;"
+    ></div>
+    <div class="container-site relative py-20 sm:py-28 lg:py-32">
+      <div class="max-w-3xl">
+        <p class="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.24em] text-star">
+          <Icon name="star" class="h-4 w-4" />
+          {site.enName}
+        </p>
+        <h1 class="mt-5 text-5xl font-black leading-tight tracking-tight sm:text-6xl">{site.name}</h1>
+        <p class="mt-5 text-2xl font-semibold text-white/95">{site.tagline}</p>
+        <p class="mt-5 max-w-2xl text-lg leading-8 text-white/75">{site.description}</p>
+        <div class="mt-9 flex flex-wrap gap-3">
+          <a href="#businesses" class="btn bg-star text-brand-strong hover:bg-star/90">
+            查看业务板块
+            <Icon name="arrow-right" class="h-4 w-4" />
+          </a>
+          <a href="/contact/" class="btn border border-white/30 bg-white/10 text-white hover:bg-white/15">
+            联系我们
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="relative border-t border-white/15 bg-black/20 backdrop-blur">
+      <div class="container-site grid grid-cols-2 gap-4 py-6 text-sm sm:grid-cols-4">
+        {
+          stats.map((stat) => (
+            <div class="flex items-center gap-3">
+              <span class="text-2xl font-black text-star">{stat.value}</span>
+              <span class="text-white/70">{stat.label}</span>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- 业务板块 -->
+  <section id="businesses" class="container-site py-20 sm:py-24">
+    <SectionHeading
+      eyebrow="业务板块"
+      title="三大业务方向"
+      description="以星动科技为平台，围绕外贸、自媒体、美容医疗提供整体化服务框架。"
+    />
+    <div class="mt-10 grid gap-5 lg:grid-cols-3">
+      {businesses.map((business) => <BusinessCard business={business} />)}
+    </div>
+  </section>
+
+  <!-- 服务模式 -->
+  <section class="bg-soft py-20 sm:py-24">
+    <div class="container-site">
+      <SectionHeading
+        eyebrow="服务模式"
+        title="统一的项目推进方式"
+        description="从业务目标出发，以阶段性成果推进，避免只交付动作、不追踪结果。"
+      />
+      <div class="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        {
+          serviceMode.map((item, index) => (
+            <article class="card-surface p-6">
+              <div class="mb-5 inline-grid h-11 w-11 place-items-center rounded-lg bg-brand text-white">
+                <Icon name={item.icon} class="h-5 w-5" />
+              </div>
+              <p class="text-xs font-bold uppercase tracking-widest text-subtle">步骤 0{index + 1}</p>
+              <h2 class="mt-1 text-lg font-bold text-ink-strong">{item.title}</h2>
+              <p class="mt-3 text-sm leading-6 text-muted">{item.description}</p>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- 合作价值 -->
+  <section class="container-site py-20 sm:py-24">
+    <div class="grid gap-10 lg:grid-cols-[1fr_1.35fr] lg:items-center">
+      <SectionHeading
+        eyebrow="合作价值"
+        title="为业务增长建立稳定底盘"
+        description="官网先搭整体框架，后续可继续补充具体案例、产品资料、团队介绍与业务细节。"
+      />
+      <div class="grid gap-5 sm:grid-cols-2">
+        {
+          strengths.map((item) => (
+            <article class="card-surface p-6">
+              <Icon name={item.icon} class="mb-4 h-5 w-5 text-brand" />
+              <h2 class="text-base font-bold text-ink-strong">{item.title}</h2>
+              <p class="mt-2 text-sm leading-6 text-muted">{item.description}</p>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <CTA />
+</Layout>

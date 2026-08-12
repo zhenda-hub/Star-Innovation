@@ -1,0 +1,146 @@
+---
+import Icon from "../components/Icon.astro";
+import Layout from "../layouts/Layout.astro";
+import SectionHeading from "../components/SectionHeading.astro";
+import { site } from "../data/site";
+
+const contactMethods = [
+  {
+    icon: "mail",
+    label: "邮箱",
+    value: site.email,
+    href: `mailto:${site.email}`,
+  },
+  {
+    icon: "phone",
+    label: "电话",
+    value: site.phone,
+    href: `tel:${site.phone.replace(/[^+\d]/g, "")}`,
+  },
+  {
+    icon: "map-pin",
+    label: "地址",
+    value: site.address,
+  },
+] as const;
+---
+
+<Layout title="联系我们" description="与星动科技取得联系，聊聊你的业务目标与增长规划。">
+  <section class="relative isolate overflow-hidden bg-brand-strong text-white">
+    <div
+      class="pointer-events-none absolute inset-0 opacity-25"
+      style="background-image: radial-gradient(circle at 20% 20%, rgba(245,158,11,0.4) 0, transparent 42%), radial-gradient(circle at 85% 80%, rgba(99,102,241,0.5) 0, transparent 45%);"
+    ></div>
+    <div class="container-site relative py-16 sm:py-20">
+      <p class="text-sm font-semibold uppercase tracking-[0.22em] text-star">联系我们</p>
+      <h1 class="mt-4 text-4xl font-black tracking-tight sm:text-5xl">聊聊你的业务目标</h1>
+      <p class="mt-4 max-w-2xl text-base leading-7 text-white/80">
+        无论是想了解某个业务板块，还是需要整体规划，欢迎通过以下方式与我们取得联系。
+      </p>
+    </div>
+  </section>
+
+  <section class="container-site py-16 sm:py-20">
+    <div class="grid gap-5 md:grid-cols-3">
+      {
+        contactMethods.map((m) => (
+          <div class="card-surface p-6">
+            <div class="mb-4 inline-grid h-11 w-11 place-items-center rounded-lg bg-brand-soft text-brand-strong">
+              <Icon name={m.icon} class="h-5 w-5" />
+            </div>
+            <p class="text-xs font-semibold uppercase tracking-widest text-subtle">{m.label}</p>
+            {"href" in m && m.href ? (
+              <a href={m.href} class="mt-2 block text-base font-semibold text-ink-strong transition hover:text-brand">
+                {m.value}
+              </a>
+            ) : (
+              <p class="mt-2 text-base font-semibold text-ink-strong">{m.value}</p>
+            )}
+          </div>
+        ))
+      }
+    </div>
+
+    <div class="mt-16 grid gap-10 lg:grid-cols-[1fr_1.4fr]">
+      <SectionHeading
+        eyebrow="合作咨询"
+        title="告诉我们你的需求"
+        description="填写下方表单，我们会尽快回复。内容越具体，越有助于我们给出针对性的初步建议。"
+      />
+
+      <form id="contact-form" class="card-surface space-y-5 p-6 sm:p-8">
+        <div class="grid gap-5 sm:grid-cols-2">
+          <div>
+            <label for="name" class="mb-1.5 block text-sm font-medium text-ink-strong">姓名</label>
+            <input
+              id="name"
+              name="name"
+              type="text"
+              required
+              placeholder="你的称呼"
+              class="w-full rounded-lg border border-line bg-bg px-4 py-2.5 text-sm text-ink outline-none transition placeholder:text-subtle focus:border-brand focus:ring-2 focus:ring-brand/20"
+            />
+          </div>
+          <div>
+            <label for="email" class="mb-1.5 block text-sm font-medium text-ink-strong">邮箱</label>
+            <input
+              id="email"
+              name="email"
+              type="email"
+              required
+              placeholder="you@example.com"
+              class="w-full rounded-lg border border-line bg-bg px-4 py-2.5 text-sm text-ink outline-none transition placeholder:text-subtle focus:border-brand focus:ring-2 focus:ring-brand/20"
+            />
+          </div>
+        </div>
+        <div>
+          <label for="topic" class="mb-1.5 block text-sm font-medium text-ink-strong">咨询板块</label>
+          <select
+            id="topic"
+            name="topic"
+            class="w-full rounded-lg border border-line bg-bg px-4 py-2.5 text-sm text-ink outline-none transition focus:border-brand focus:ring-2 focus:ring-brand/20"
+          >
+            <option>外贸服务</option>
+            <option>自媒体服务</option>
+            <option>美容医疗</option>
+            <option>整体合作咨询</option>
+          </select>
+        </div>
+        <div>
+          <label for="message" class="mb-1.5 block text-sm font-medium text-ink-strong">需求描述</label>
+          <textarea
+            id="message"
+            name="message"
+            rows={5}
+            required
+            placeholder="简单描述你的业务目标、现状与期望的合作方向……"
+            class="w-full resize-y rounded-lg border border-line bg-bg px-4 py-2.5 text-sm text-ink outline-none transition placeholder:text-subtle focus:border-brand focus:ring-2 focus:ring-brand/20"
+          ></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary w-full sm:w-auto">
+          提交咨询
+          <Icon name="send" class="h-4 w-4" />
+        </button>
+        <p id="form-hint" class="text-xs text-subtle">
+          提交后将唤起你的邮件客户端发送咨询邮件。
+        </p>
+      </form>
+    </div>
+  </section>
+</Layout>
+
+<script>
+  const form = document.getElementById("contact-form");
+  form?.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const data = new FormData(form as HTMLFormElement);
+    const name = data.get("name") as string;
+    const email = data.get("email") as string;
+    const topic = data.get("topic") as string;
+    const message = data.get("message") as string;
+    const subject = `【星动科技官网咨询】${topic} — ${name}`;
+    const body = `姓名：${name}\n邮箱：${email}\n咨询板块：${topic}\n\n需求描述：\n${message}`;
+    const mailto = `mailto:${"hello@starinnovation.cn"}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    window.location.href = mailto;
+  });
+</script>

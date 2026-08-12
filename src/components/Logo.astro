@@ -1,0 +1,22 @@
+---
+import { site } from "../data/site";
+import Icon from "./Icon.astro";
+
+interface Props {
+  class?: string;
+}
+
+const { class: className = "" } = Astro.props;
+---
+
+<a href="/" class={`group inline-flex items-center gap-2.5 ${className}`} aria-label={site.name}>
+  <span class="relative grid h-9 w-9 place-items-center rounded-lg bg-brand text-white shadow-sm transition group-hover:shadow-md">
+    <Icon name="star" class="h-5 w-5 text-star" strokeWidth={1.5} />
+  </span>
+  <span class="flex flex-col leading-none">
+    <span class="text-lg font-bold tracking-tight text-ink-strong">{site.name}</span>
+    <span class="mt-0.5 text-[10px] font-semibold tracking-[0.18em] text-subtle uppercase">
+      {site.enName}
+    </span>
+  </span>
+</a>

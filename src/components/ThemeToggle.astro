@@ -1,0 +1,30 @@
+---
+import Icon from "./Icon.astro";
+---
+
+<button
+  id="theme-toggle"
+  type="button"
+  class="grid h-10 w-10 place-items-center rounded-lg border border-line bg-surface text-ink transition hover:bg-soft"
+  aria-label="切换明暗主题"
+>
+  <span data-theme-icon="light" class="hidden">
+    <Icon name="sun" class="h-5 w-5" />
+  </span>
+  <span data-theme-icon="dark">
+    <Icon name="moon" class="h-5 w-5" />
+  </span>
+</button>
+
+<style>
+  /* 亮色默认显示月亮（提示可切换到深色）；深色显示太阳 */
+  [data-theme-icon="light"] {
+    display: none;
+  }
+  html.dark [data-theme-icon="light"] {
+    display: block;
+  }
+  html.dark [data-theme-icon="dark"] {
+    display: none;
+  }
+</style>

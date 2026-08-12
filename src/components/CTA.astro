@@ -1,0 +1,41 @@
+---
+import Icon from "./Icon.astro";
+import { site } from "../data/site";
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = "准备好开启下一步了吗？",
+  description = "告诉我们你的业务目标与现状，我们将从整体框架开始，一起推进落地方案。",
+} = Astro.props;
+---
+
+<section class="container-site py-16 sm:py-20">
+  <div class="relative overflow-hidden rounded-2xl bg-brand px-6 py-12 text-white sm:px-12 sm:py-16">
+    <div
+      class="pointer-events-none absolute inset-0 opacity-20"
+      style="background-image: radial-gradient(circle at 20% 20%, #f59e0b 0, transparent 45%), radial-gradient(circle at 80% 70%, #6366f1 0, transparent 45%);"
+    ></div>
+    <div class="relative max-w-2xl">
+      <p class="text-sm font-semibold uppercase tracking-[0.22em] text-star">与星动科技同行</p>
+      <h2 class="mt-3 text-2xl font-bold sm:text-3xl">{title}</h2>
+      <p class="mt-4 leading-7 text-white/75">{description}</p>
+      <div class="mt-8 flex flex-wrap gap-3">
+        <a href="/contact/" class="btn bg-white text-brand hover:bg-soft">
+          联系我们
+          <Icon name="arrow-right" class="h-4 w-4" />
+        </a>
+        <a
+          href={`mailto:${site.email}`}
+          class="btn border border-white/30 bg-white/10 text-white hover:bg-white/15"
+        >
+          <Icon name="mail" class="h-4 w-4" />
+          发送邮件
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

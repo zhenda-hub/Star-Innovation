@@ -1,0 +1,99 @@
+---
+import Icon from "./Icon.astro";
+import Logo from "./Logo.astro";
+import ThemeToggle from "./ThemeToggle.astro";
+
+const nav = [
+  { label: "首页", href: "/" },
+  { label: "外贸", href: "/foreign-trade/" },
+  { label: "自媒体", href: "/self-media/" },
+  { label: "美容医疗", href: "/beauty-medical/" },
+  { label: "关于我们", href: "/about/" },
+  { label: "联系我们", href: "/contact/" },
+];
+
+const pathname = Astro.url.pathname;
+---
+
+<header class="sticky top-0 z-50 border-b border-line/70 bg-bg/85 backdrop-blur-md">
+  <div class="container-site flex h-16 items-center justify-between gap-4">
+    <Logo />
+
+    <nav class="hidden items-center gap-1 md:flex" aria-label="主导航">
+      {
+        nav.map((item) => {
+          const active =
+            item.href === "/" ? pathname === "/" : pathname.startsWith(item.href);
+          return (
+            <a
+              href={item.href}
+              aria-current={active ? "page" : undefined}
+              class:list={[
+                "rounded-lg px-3 py-2 text-sm font-medium transition",
+                active
+                  ? "bg-brand-soft text-brand-strong"
+                  : "text-muted hover:bg-soft hover:text-ink-strong",
+              ]}
+            >
+              {item.label}
+            </a>
+          );
+        })
+      }
+    </nav>
+
+    <div class="flex items-center gap-2">
+      <ThemeToggle />
+      <button
+        id="menu-toggle"
+        type="button"
+        class="grid h-10 w-10 place-items-center rounded-lg border border-line bg-surface text-ink md:hidden"
+        aria-label="打开菜单"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+      >
+        <span data-icon="open"><Icon name="menu" class="h-5 w-5" /></span>
+        <span data-icon="close" class="hidden"><Icon name="close" class="h-5 w-5" /></span>
+      </button>
+    </div>
+  </div>
+
+  <div id="mobile-menu" class="hidden border-t border-line bg-surface md:hidden">
+    <nav class="container-site flex flex-col gap-1 py-3" aria-label="移动端导航">
+      {
+        nav.map((item) => {
+          const active =
+            item.href === "/" ? pathname === "/" : pathname.startsWith(item.href);
+          return (
+            <a
+              href={item.href}
+              class:list={[
+                "rounded-lg px-3 py-2.5 text-sm font-medium transition",
+                active
+                  ? "bg-brand-soft text-brand-strong"
+                  : "text-muted hover:bg-soft hover:text-ink-strong",
+              ]}
+            >
+              {item.label}
+            </a>
+          );
+        })
+      }
+    </nav>
+  </div>
+</header>
+
+<script>
+  const toggle = document.getElementById("menu-toggle");
+  const menu = document.getElementById("mobile-menu");
+  const open = toggle?.querySelector('[data-icon="open"]');
+  const close = toggle?.querySelector('[data-icon="close"]');
+
+  toggle?.addEventListener("click", () => {
+    const isOpen = !menu?.classList.contains("hidden");
+    menu?.classList.toggle("hidden", isOpen);
+    open?.classList.toggle("hidden", !isOpen);
+    close?.classList.toggle("hidden", isOpen);
+    toggle?.setAttribute("aria-expanded", String(!isOpen));
+  });
+</script>

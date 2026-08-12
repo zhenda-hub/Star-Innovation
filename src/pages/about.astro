@@ -1,0 +1,94 @@
+---
+import CTA from "../components/CTA.astro";
+import Icon from "../components/Icon.astro";
+import Layout from "../layouts/Layout.astro";
+import SectionHeading from "../components/SectionHeading.astro";
+import { accentClasses, businesses, site } from "../data/site";
+
+const values = [
+  {
+    icon: "target",
+    title: "以结果为导向",
+    description: "不只交付动作，更关注每一步是否真正推动业务结果。",
+  },
+  {
+    icon: "sparkles",
+    title: "长期主义",
+    description: "用可持续的方法沉淀能力，而非追逐短期流量与表面数据。",
+  },
+  {
+    icon: "shield",
+    title: "专业可信赖",
+    description: "在关键环节保持透明、可追踪，让合作过程安心可控。",
+  },
+  {
+    icon: "users",
+    title: "协同共赢",
+    description: "与客户、伙伴共同成长，把外部能力内化为业务资产。",
+  },
+] as const;
+---
+
+<Layout title="关于我们" description="了解星动科技的业务定位、使命愿景与合作价值观。">
+  <section class="relative isolate overflow-hidden bg-brand-strong text-white">
+    <div
+      class="pointer-events-none absolute inset-0 opacity-25"
+      style="background-image: radial-gradient(circle at 80% 20%, rgba(245,158,11,0.4) 0, transparent 40%), radial-gradient(circle at 15% 80%, rgba(99,102,241,0.5) 0, transparent 45%);"
+    ></div>
+    <div class="container-site relative py-16 sm:py-20">
+      <p class="text-sm font-semibold uppercase tracking-[0.22em] text-star">关于我们</p>
+      <h1 class="mt-4 text-4xl font-black tracking-tight sm:text-5xl">让增长有方向，让协作有底盘</h1>
+      <p class="mt-4 max-w-2xl text-base leading-7 text-white/80">{site.description}</p>
+    </div>
+  </section>
+
+  <section class="container-site py-16 sm:py-20">
+    <div class="grid gap-10 lg:grid-cols-2 lg:items-center">
+      <SectionHeading
+        eyebrow="星动科技"
+        title="连接全球市场，驱动品牌增长"
+        description="我们相信，可持续的增长不是单点爆发，而是目标、内容、渠道与数据的系统协同。星动科技以三大业务板块为底座，为不同类型的企业提供整体化的增长服务框架。"
+      />
+      <div class="grid gap-5 sm:grid-cols-2">
+        {
+          businesses.map((b) => (
+            <a href={b.href} class="card-surface p-6 transition hover:-translate-y-1 hover:shadow-md">
+              <Icon name={b.icon} class={`mb-3 h-6 w-6 ${accentClasses[b.accent].text}`} />
+              <h2 class="text-base font-bold text-ink-strong">{b.title}</h2>
+              <p class="mt-2 text-sm leading-6 text-muted">{b.tagline}</p>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-soft py-16 sm:py-20">
+    <div class="container-site">
+      <SectionHeading
+        eyebrow="价值观"
+        title="我们如何做事"
+        description="四条原则贯穿所有业务板块，确保每一次协作都朝着长期价值积累。"
+        align="center"
+      />
+      <div class="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        {
+          values.map((v) => (
+            <article class="card-surface p-6">
+              <div class="mb-4 inline-grid h-11 w-11 place-items-center rounded-lg bg-brand-soft text-brand-strong">
+                <Icon name={v.icon} class="h-5 w-5" />
+              </div>
+              <h2 class="text-base font-bold text-ink-strong">{v.title}</h2>
+              <p class="mt-2 text-sm leading-6 text-muted">{v.description}</p>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <CTA
+    title="与星动科技一起，把增长做扎实"
+    description="无论你处于哪个业务阶段，我们都可以从整体框架开始，找到最合适的切入点。"
+  />
+</Layout>

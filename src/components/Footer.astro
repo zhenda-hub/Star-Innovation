@@ -1,0 +1,70 @@
+---
+import Icon from "./Icon.astro";
+import Logo from "./Logo.astro";
+import { businesses, site } from "../data/site";
+
+const year = new Date().getFullYear();
+---
+
+<footer class="border-t border-line bg-surface">
+  <div class="container-site py-14">
+    <div class="grid gap-10 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
+      <div class="max-w-sm">
+        <Logo />
+        <p class="mt-4 text-sm leading-6 text-muted">{site.description}</p>
+        <p class="mt-4 text-xs leading-5 text-subtle">{site.tagline}</p>
+      </div>
+
+      <div>
+        <h2 class="text-sm font-semibold text-ink-strong">业务板块</h2>
+        <ul class="mt-4 space-y-2.5">
+          {
+            businesses.map((b) => (
+              <li>
+                <a href={b.href} class="text-sm text-muted transition hover:text-brand">
+                  {b.title}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <div>
+        <h2 class="text-sm font-semibold text-ink-strong">快速导航</h2>
+        <ul class="mt-4 space-y-2.5">
+          <li><a href="/about/" class="text-sm text-muted transition hover:text-brand">关于我们</a></li>
+          <li><a href="/contact/" class="text-sm text-muted transition hover:text-brand">联系我们</a></li>
+          <li><a href="/" class="text-sm text-muted transition hover:text-brand">首页</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h2 class="text-sm font-semibold text-ink-strong">联系方式</h2>
+        <ul class="mt-4 space-y-2.5">
+          <li>
+            <a href={`mailto:${site.email}`} class="inline-flex items-center gap-2 text-sm text-muted transition hover:text-brand">
+              <Icon name="mail" class="h-4 w-4" />
+              {site.email}
+            </a>
+          </li>
+          <li>
+            <a href={`tel:${site.phone.replace(/[^+\d]/g, "")}`} class="inline-flex items-center gap-2 text-sm text-muted transition hover:text-brand">
+              <Icon name="phone" class="h-4 w-4" />
+              {site.phone}
+            </a>
+          </li>
+          <li class="inline-flex items-center gap-2 text-sm text-muted">
+            <Icon name="map-pin" class="h-4 w-4" />
+            {site.address}
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="mt-12 flex flex-col gap-3 border-t border-line pt-6 text-xs text-subtle sm:flex-row sm:items-center sm:justify-between">
+      <p>{site.copyright.replace("© 2026", `© ${year}`)}</p>
+      <p>{site.enName} · {site.tagline}</p>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,84 @@
+---
+import CTA from "./CTA.astro";
+import Icon from "./Icon.astro";
+import Layout from "../layouts/Layout.astro";
+import SectionHeading from "./SectionHeading.astro";
+import { accentClasses, type Business } from "../data/site";
+
+interface Props {
+  business: Business;
+}
+
+const { business } = Astro.props;
+const accent = accentClasses[business.accent];
+---
+
+<Layout title={business.title} description={business.summary}>
+  <section class={`relative isolate overflow-hidden bg-gradient-to-br ${accent.gradient} text-white`}>
+    <div
+      class="pointer-events-none absolute inset-0 opacity-25"
+      style="background-image: radial-gradient(circle at 75% 20%, rgba(255,255,255,0.5) 0, transparent 40%), radial-gradient(circle at 20% 85%, rgba(255,255,255,0.3) 0, transparent 45%);"
+    ></div>
+    <div class="container-site relative py-16 sm:py-20 lg:py-24">
+      <p class="text-sm font-semibold uppercase tracking-[0.22em] text-white/80">星动科技 · 业务板块</p>
+      <div class="mt-5 flex items-center gap-4">
+        <span class="grid h-14 w-14 place-items-center rounded-xl bg-white/15 backdrop-blur">
+          <Icon name={business.icon} class="h-7 w-7" />
+        </span>
+        <h1 class="text-4xl font-black tracking-tight sm:text-5xl">{business.title}</h1>
+      </div>
+      <p class="mt-4 text-xl font-semibold text-white/95">{business.tagline}</p>
+      <p class="mt-4 max-w-2xl text-base leading-7 text-white/85">{business.description}</p>
+    </div>
+  </section>
+
+  <section class="container-site py-16 sm:py-20">
+    <SectionHeading
+      eyebrow="服务内容"
+      title={`${business.title}核心能力`}
+      description="围绕目标、内容、执行与数据形成完整闭环，覆盖从前期诊断到长期复盘的关键环节。"
+    />
+    <div class="mt-10 grid gap-5 md:grid-cols-2">
+      {
+        business.capabilities.map((item, index) => (
+          <article class="card-surface flex gap-4 p-6">
+            <span class={`grid h-11 w-11 shrink-0 place-items-center rounded-lg text-sm font-bold text-white ${accent.bg}`}>
+              0{index + 1}
+            </span>
+            <div>
+              <h2 class="text-lg font-bold text-ink-strong">{item.title}</h2>
+              <p class="mt-2 text-sm leading-6 text-muted">{item.description}</p>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="bg-soft py-16 sm:py-20">
+    <div class="container-site">
+      <SectionHeading
+        eyebrow="协作流程"
+        title="从需求到落地的四步协作"
+        description="先明确目标，再按节奏推进，每个环节都保留复盘与调整空间。"
+      />
+      <div class="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        {
+          business.process.map((step, index) => (
+            <article class="relative rounded-xl border border-line bg-surface p-6">
+              <span class="absolute right-5 top-4 text-3xl font-black text-line">0{index + 1}</span>
+              <div class={`mb-4 h-1.5 w-8 rounded-full ${accent.bg}`}></div>
+              <h2 class="text-lg font-bold text-ink-strong">{step.title}</h2>
+              <p class="mt-3 text-sm leading-6 text-muted">{step.description}</p>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <CTA
+    title={`需要针对${business.navTitle}业务做整体规划？`}
+    description="把阶段目标、现有资源与后续细化需求发给我们，我们将从整体框架开始推进，逐步落地。"
+  />
+</Layout>

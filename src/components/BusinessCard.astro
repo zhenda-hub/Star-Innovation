@@ -1,0 +1,31 @@
+---
+import Icon from "./Icon.astro";
+import { accentClasses, type Business } from "../data/site";
+
+interface Props {
+  business: Business;
+}
+
+const { business } = Astro.props;
+const accent = accentClasses[business.accent];
+---
+
+<a
+  href={business.href}
+  class="group relative flex flex-col overflow-hidden rounded-xl border border-line bg-surface p-7 shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
+>
+  <div class={`absolute inset-x-0 top-0 h-1 bg-gradient-to-r ${accent.gradient}`}></div>
+
+  <div class={`inline-grid h-12 w-12 place-items-center rounded-lg ${accent.soft}`}>
+    <Icon name={business.icon} class="h-6 w-6" />
+  </div>
+
+  <h3 class="mt-5 text-xl font-bold text-ink-strong">{business.title}</h3>
+  <p class={`mt-1 text-sm font-semibold ${accent.text}`}>{business.tagline}</p>
+  <p class="mt-3 flex-1 text-sm leading-6 text-muted">{business.summary}</p>
+
+  <span class={`mt-5 inline-flex items-center gap-1.5 text-sm font-semibold ${accent.text}`}>
+    了解详情
+    <Icon name="arrow-right" class="h-4 w-4 transition group-hover:translate-x-1" />
+  </span>
+</a>
