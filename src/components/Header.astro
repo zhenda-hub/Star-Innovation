@@ -31,8 +31,8 @@ const pathname = Astro.url.pathname;
               class:list={[
                 "rounded-lg px-3 py-2 text-sm font-medium transition",
                 active
-                  ? "bg-brand-soft text-brand-strong"
-                  : "text-muted hover:bg-soft hover:text-ink-strong",
+                  ? "bg-brand-soft text-brand-strong dark:text-star"
+                  : "text-muted hover:bg-soft hover:text-ink-strong dark:hover:text-ink-strong",
               ]}
             >
               {item.label}
@@ -70,8 +70,8 @@ const pathname = Astro.url.pathname;
               class:list={[
                 "rounded-lg px-3 py-2.5 text-sm font-medium transition",
                 active
-                  ? "bg-brand-soft text-brand-strong"
-                  : "text-muted hover:bg-soft hover:text-ink-strong",
+                  ? "bg-brand-soft text-brand-strong dark:text-star"
+                  : "text-muted hover:bg-soft hover:text-ink-strong dark:hover:text-ink-strong",
               ]}
             >
               {item.label}

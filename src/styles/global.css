@@ -1,79 +1,84 @@
 @import "tailwindcss";
 
+/* 启用 class 策略的深色模式（配合 html.dark，使 dark: 变体生效） */
+@custom-variant dark (&:where(.dark, .dark *));
+
 /* ============================================================
-   星动科技 · 设计系统
-   Star Innovation Design System
+   星动科技 · 设计系统（高端翡翠）
+   Deep Ink Green × Champagne Gold
    ============================================================ */
 
 @theme {
   /* 字体 */
-  --font-sans: "Inter", "PingFang SC", "Microsoft YaHei", "Noto Sans SC",
-    "Source Han Sans SC", system-ui, sans-serif;
+  --font-sans: "Inter", "PingFang SC", "HarmonyOS Sans SC", "Source Han Sans SC",
+    "Microsoft YaHei", "Noto Sans SC", system-ui, sans-serif;
 
   /* 基础色 · 亮色 */
-  --color-bg: #f6f7fb;
+  --color-bg: #f7f8f5;
   --color-surface: #ffffff;
-  --color-soft: #eef1f7;
-  --color-ink: #1c2434;
-  --color-ink-strong: #0f172a;
-  --color-muted: #5b6b7f;
-  --color-subtle: #8494a8;
-  --color-line: #e2e8f0;
+  --color-soft: #eff2ec;
+  --color-ink: #2a332f;
+  --color-ink-strong: #14201b;
+  --color-muted: #5c6b65;
+  --color-subtle: #86938d;
+  --color-line: #e0e5de;
 
-  /* 品牌主色（靛蓝 · 星夜） */
-  --color-brand: #4f46e5;
-  --color-brand-strong: #3730a3;
-  --color-brand-soft: #e0e7ff;
+  /* 品牌主色（深墨绿） */
+  --color-brand: #17604a;
+  --color-brand-strong: #0f3d34;
+  --color-brand-soft: #dcebe4;
 
-  /* 品牌点缀（星光金） */
-  --color-star: #f59e0b;
-  --color-star-soft: #fef3c7;
+  /* 品牌点缀（香槟金） */
+  --color-star: #d4af7a;
+  --color-star-strong: #b8904e;
+  --color-star-soft: #f4ecdb;
 
-  /* 板块色 · 外贸（天空蓝） */
-  --color-export: #0284c7;
-  --color-export-strong: #075985;
-  --color-export-soft: #e0f2fe;
+  /* 板块色 · 外贸（雾蓝绿） */
+  --color-export: #2f7d8c;
+  --color-export-strong: #1f5c66;
+  --color-export-soft: #e0eef0;
 
-  /* 板块色 · 自媒体（活力橙） */
-  --color-media: #ea580c;
-  --color-media-strong: #9a3412;
-  --color-media-soft: #ffedd5;
+  /* 板块色 · 自媒体（陶土橙） */
+  --color-media: #c26a3c;
+  --color-media-strong: #96491f;
+  --color-media-soft: #f6e8dd;
 
-  /* 板块色 · 美容医疗（玫瑰粉） */
-  --color-beauty: #db2777;
-  --color-beauty-strong: #9d174d;
-  --color-beauty-soft: #fce7f3;
+  /* 板块色 · 美容医疗（玫瑰） */
+  --color-beauty: #a8556f;
+  --color-beauty-strong: #7d3a52;
+  --color-beauty-soft: #f6e6ea;
 }
 
 /* 深色模式 */
 .dark {
-  --color-bg: #0b1120;
-  --color-surface: #111827;
-  --color-soft: #0f172a;
-  --color-ink: #cbd5e1;
-  --color-ink-strong: #f1f5f9;
-  --color-muted: #94a3b8;
-  --color-subtle: #64748b;
-  --color-line: #1f2937;
+  --color-bg: #0c1310;
+  --color-surface: #14201b;
+  --color-soft: #0f1a16;
+  --color-ink: #c6d2cc;
+  --color-ink-strong: #edf3f0;
+  --color-muted: #93a49d;
+  --color-subtle: #687a72;
+  --color-line: #25342e;
 
-  --color-brand: #6366f1;
-  --color-brand-strong: #4f46e5;
-  --color-brand-soft: #1e1b4b;
+  --color-brand: #2e7d68;
+  --color-brand-strong: #12362d;
+  --color-brand-soft: #173028;
 
-  --color-star: #fbbf24;
-  --color-star-soft: #3a2e0e;
+  --color-star: #d4af7a;
+  --color-star-strong: #e0c28f;
+  --color-star-soft: #3a3223;
 
-  --color-export: #38bdf8;
-  --color-export-strong: #0ea5e9;
-  --color-export-soft: #0c2a3a;
+  --color-export: #4aa3b0;
+  --color-export-strong: #77c0cb;
+  --color-export-soft: #12323a;
 
-  --color-media: #fb923c;
-  --color-media-strong: #f97316;
-  --color-media-soft: #3a2413;
+  --color-media: #d98a5f;
+  --color-media-strong: #e6a67f;
+  --color-media-soft: #3a2418;
 
-  --color-beauty: #f472b6;
-  --color-beauty-strong: #ec4899;
-  --color-beauty-soft: #3a1526;
+  --color-beauty: #c97d94;
+  --color-beauty-strong: #d9a0b0;
+  --color-beauty-soft: #3a1e28;
 }
 
 @layer base {
@@ -91,7 +96,7 @@
   }
 
   ::selection {
-    @apply bg-brand/20 text-ink-strong;
+    @apply bg-star/30 text-ink-strong;
   }
 
   :focus-visible {
