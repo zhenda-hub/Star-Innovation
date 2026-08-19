@@ -4,9 +4,9 @@ export const site = {
   tagline: "连接全球市场，驱动品牌增长",
   description:
     "星动科技聚焦外贸、自媒体与美容医疗三大业务板块，以数据、内容和全球协作能力，帮助企业建立更可持续的增长方式。",
-  email: "hello@starinnovation.cn",
-  phone: "+86 400-000-0000",
-  address: "中国 · 杭州",
+  email: "msoft77564532@outlook.com",
+  phone: "+86 151-3537-6773",
+  address: "中国 · 北京",
   beian: "",
   copyright: "© 2026 星动科技 Star Innovation. 保留所有权利。",
 };
