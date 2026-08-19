@@ -1,11 +1,12 @@
 # 星动科技官网 · Star Innovation Website
 
-星动科技（Star Innovation）官网，聚焦外贸、自媒体、美容医疗三大业务板块。
+[English](./README.en.md) | 中文
+
+星动科技（Star Innovation）官网，聚焦**外贸、自媒体、美容医疗**三大业务板块，以数据、内容和全球协作能力，帮助企业建立更可持续的增长方式。
 
 ## 线上地址
 
 - **生产环境**：https://star-innovation.pages.dev/
-- **分支预览**：https://feature-website.star-innovation.pages.dev/
 
 ## 技术栈
 
@@ -39,25 +40,28 @@ npx wrangler pages deploy dist --project-name star-innovation
 | 美容医疗 | `/beauty-medical/` |
 | 关于我们 | `/about/` |
 | 联系我们 | `/contact/` |
+| 404 | `/404` |
 
 ## 目录结构
 
 ```
 src/
 ├── components/     # 组件（Header/Footer/BusinessCard 等）
-├── data/site.ts    # 站点与业务内容（数据驱动）
+├── data/site.ts    # 站点与业务内容（数据驱动，业务文案集中于此）
 ├── layouts/        # 布局
 ├── pages/          # 页面
 ├── scripts/        # 客户端脚本（主题切换）
-└── styles/         # 全局样式与设计系统
+└── styles/         # 全局样式与设计系统（翡翠绿 + 香槟金配色）
 ```
 
-## 分支 / Worktree 约定
+## 内容维护
+
+三大业务板块（外贸 / 自媒体 / 美容医疗）的能力点与服务流程文案统一维护在 `src/data/site.ts`，新增或调整业务内容无需改动页面组件。
+
+## 分支约定
 
 ```
-main              ← 集成主干
-feature/website   ← 整体官网（已上线）
-feature/<板块>    ← 后续逐板块深化细节
+main ← 唯一主干（当前所有代码均在此）
 ```
 
-每个业务板块使用独立分支 + worktree 开发，完成后合并回 `main`。
+所有功能直接基于 `main` 开发，完成后合并回 `main`。
