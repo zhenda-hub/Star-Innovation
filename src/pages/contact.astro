@@ -68,7 +68,7 @@ const contactMethods = [
         description="填写下方表单，我们会尽快回复。内容越具体，越有助于我们给出针对性的初步建议。"
       />
 
-      <form id="contact-form" class="card-surface space-y-5 p-6 sm:p-8">
+      <form id="contact-form" data-email={site.email} class="card-surface space-y-5 p-6 sm:p-8">
         <div class="grid gap-5 sm:grid-cols-2">
           <div>
             <label for="name" class="mb-1.5 block text-sm font-medium text-ink-strong">姓名</label>
@@ -140,7 +140,7 @@ const contactMethods = [
     const message = data.get("message") as string;
     const subject = `【星动科技官网咨询】${topic} — ${name}`;
     const body = `姓名：${name}\n邮箱：${email}\n咨询板块：${topic}\n\n需求描述：\n${message}`;
-    const mailto = `mailto:${"hello@starinnovation.cn"}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    const mailto = `mailto:${form.dataset.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     window.location.href = mailto;
   });
 </script>
