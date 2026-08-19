@@ -38,10 +38,10 @@
   --color-export-strong: #1f5c66;
   --color-export-soft: #e0eef0;
 
-  /* 板块色 · 自媒体（陶土橙） */
-  --color-media: #c26a3c;
-  --color-media-strong: #96491f;
-  --color-media-soft: #f6e8dd;
+  /* 板块色 · 软件开发（科技蓝） */
+  --color-software: #3d6ea8;
+  --color-software-strong: #2a4f7d;
+  --color-software-soft: #dfe9f4;
 
   /* 板块色 · 美容医疗（玫瑰） */
   --color-beauty: #a8556f;
@@ -72,9 +72,9 @@
   --color-export-strong: #77c0cb;
   --color-export-soft: #12323a;
 
-  --color-media: #d98a5f;
-  --color-media-strong: #e6a67f;
-  --color-media-soft: #3a2418;
+  --color-software: #6f9ed6;
+  --color-software-strong: #9cc0e8;
+  --color-software-soft: #1b2b40;
 
   --color-beauty: #c97d94;
   --color-beauty-strong: #d9a0b0;

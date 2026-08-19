@@ -3,7 +3,7 @@ export const site = {
   enName: "Star Innovation",
   tagline: "连接全球市场，驱动品牌增长",
   description:
-    "星动科技聚焦外贸、自媒体与美容医疗三大业务板块，以数据、内容和全球协作能力，帮助企业建立更可持续的增长方式。",
+    "星动科技聚焦外贸、软件开发与美容医疗三大业务板块，以数据、内容和全球协作能力，帮助企业建立更可持续的增长方式。",
   email: "msoft77564532@outlook.com",
   phone: "+86 151-3537-6773",
   address: "中国 · 北京",
@@ -11,10 +11,10 @@ export const site = {
   copyright: "© 2026 星动科技 Star Innovation. 保留所有权利。",
 };
 
-export type BusinessAccent = "export" | "media" | "beauty";
+export type BusinessAccent = "export" | "software" | "beauty";
 export type IconName =
   | "globe"
-  | "video"
+  | "code"
   | "heart"
   | "arrow-right"
   | "check"
@@ -101,51 +101,51 @@ export const businesses: Business[] = [
     ],
   },
   {
-    slug: "self-media",
-    href: "/self-media/",
-    title: "自媒体服务",
-    navTitle: "自媒体",
-    tagline: "内容策划与账号运营增长",
+    slug: "software",
+    href: "/software/",
+    title: "软件开发",
+    navTitle: "软件开发",
+    tagline: "从需求到上线的定制开发",
     summary:
-      "以内容资产为起点，连接选题、制作、分发与复盘，让内容沉淀为获客与转化能力。",
+      "面向企业与品牌，提供网站、小程序、业务系统与自动化工具的定制开发服务。",
     description:
-      "服务品牌、企业与个人 IP，围绕账号定位、内容策划、制作分发与数据分析，建设可持续的内容增长体系。",
-    icon: "video",
-    accent: "media",
+      "围绕业务场景与真实使用流程，提供需求梳理、技术方案、开发交付与长期维护，让数字工具真正服务于业务增长。",
+    icon: "code",
+    accent: "software",
     capabilities: [
       {
-        title: "账号与 IP 定位",
-        description: "结合业务目标与受众特征，确定内容方向、人设表达与内容结构。",
+        title: "需求梳理与方案设计",
+        description: "结合业务目标与用户流程，输出功能清单、技术方案与迭代节奏。",
       },
       {
-        title: "内容策划与制作",
-        description: "覆盖选题库、脚本、拍摄、剪辑与封面物料，形成稳定产出节奏。",
+        title: "官网与品牌站点",
+        description: "定制企业官网、落地页与品牌站点，兼顾表达、性能与 SEO。",
       },
       {
-        title: "平台运营与分发",
-        description: "围绕平台规则优化发布、互动、账号主页与关键词内容。",
+        title: "小程序与 H5 应用",
+        description: "面向微信生态与移动场景，开发小程序、H5 与轻量应用。",
       },
       {
-        title: "数据复盘与迭代",
-        description: "跟踪流量、留存与转化数据，调整内容策略与投放协作。",
+        title: "业务系统与自动化",
+        description: "搭建内部系统、数据看板与自动化流程，减少重复人工，提升协作效率。",
       },
     ],
     process: [
       {
-        title: "目标对齐",
-        description: "明确内容目标、目标人群与可衡量的成果指标。",
+        title: "需求梳理",
+        description: "明确业务目标、用户场景、功能边界与验收标准。",
       },
       {
-        title: "内容方案",
-        description: "制定账号定位、内容栏目、选题计划与制作排期。",
+        title: "方案设计",
+        description: "输出技术架构、页面结构与开发排期，确认后进入开发。",
       },
       {
-        title: "制作发布",
-        description: "按计划完成内容制作、审核、发布与互动维护。",
+        title: "开发交付",
+        description: "按迭代推进开发、测试与联调，分阶段交付可验收成果。",
       },
       {
-        title: "复盘迭代",
-        description: "汇总数据表现，沉淀有效选题与内容模板。",
+        title: "上线维护",
+        description: "完成部署上线，提供维护、迭代与数据复盘支持。",
       },
     ],
   },
@@ -212,12 +212,12 @@ export const accentClasses: Record<
     border: "border-export",
     gradient: "from-export to-export-strong",
   },
-  media: {
-    text: "text-media",
-    bg: "bg-media",
-    soft: "bg-media-soft text-media-strong",
-    border: "border-media",
-    gradient: "from-media to-media-strong",
+  software: {
+    text: "text-software",
+    bg: "bg-software",
+    soft: "bg-software-soft text-software-strong",
+    border: "border-software",
+    gradient: "from-software to-software-strong",
   },
   beauty: {
     text: "text-beauty",

@@ -2,7 +2,7 @@
 
 [中文](./README.md) | English
 
-The official website of **Star Innovation** (星动科技), focused on three business lines — **Foreign Trade**, **Self-Media**, and **Beauty & Medical** — helping enterprises build more sustainable growth through data, content, and global collaboration.
+The official website of **Star Innovation** (星动科技), focused on three business lines — **Foreign Trade**, **Software Development**, and **Beauty & Medical** — helping enterprises build more sustainable growth through data, content, and global collaboration.
 
 ## Live URL
 
@@ -36,7 +36,7 @@ npx wrangler pages deploy dist --project-name star-innovation
 |------|-------|
 | Home | `/` |
 | Foreign Trade | `/foreign-trade/` |
-| Self-Media | `/self-media/` |
+| Software Development | `/software/` |
 | Beauty & Medical | `/beauty-medical/` |
 | About | `/about/` |
 | Contact | `/contact/` |
@@ -56,12 +56,13 @@ src/
 
 ## Content Maintenance
 
-All copy for the three business lines (Foreign Trade / Self-Media / Beauty & Medical) — capabilities and service processes — lives in `src/data/site.ts`. Adding or adjusting business content requires no changes to page components.
+All copy for the three business lines (Foreign Trade / Software Development / Beauty & Medical) — capabilities and service processes — lives in `src/data/site.ts`. Adding or adjusting business content requires no changes to page components.
 
 ## Branching Convention
 
 ```
-main ← single trunk (all current code lives here)
+main ← single trunk (production code)
+feature/* ← feature iteration branches (merged back into main when complete)
 ```
 
-All features are developed directly on `main` and merged back into it when complete.
+Features are developed on feature branches and merged back into `main` when complete.
